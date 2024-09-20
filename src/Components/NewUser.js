@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
-import { UsersContext } from "../Context/UsersContext";
+import { useState } from "react";
+import useUsersContext from "../hooks/useUsersContext";
 
 const NewUser = ({ handleAddUser }) => {
   const [userName, setUserName] = useState("");
 
-  const { users, setUsers } = useContext(UsersContext);
+  const { setUsers } = useUsersContext();
 
   function handleSubmit(e) {
     e.preventDefault();

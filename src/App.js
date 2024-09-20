@@ -1,21 +1,15 @@
-import { useState } from "react";
 import Users from "./Components/Users";
 import NewUser from "./Components/NewUser";
-import { UsersContext } from "./Context/UsersContext";
+import UserProvider from "./Context/UsersContext";
 
 function App() {
-  const [users, setUsers] = useState([
-    { id: 1, username: "anisul" },
-    { id: 2, username: "alex" },
-  ]);
-
   return (
-    <UsersContext.Provider value={{ users, setUsers }}>
+    <UserProvider>
       <div>
         <NewUser />
-        <Users users={users} />
+        <Users />
       </div>
-    </UsersContext.Provider>
+    </UserProvider>
   );
 }
 
