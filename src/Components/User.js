@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UsersContext } from "../Context/UsersContext";
 
 const User = ({ user, handleDeleteUser }) => {
+  const { users, setUsers } = useContext(UsersContext);
+
   const { id, username } = user;
 
   function handleDelete(id) {
-    handleDeleteUser(id);
+    const filteredUsers = users.filter((user) => user.id !== id);
+    setUsers(filteredUsers);
   }
 
   return (

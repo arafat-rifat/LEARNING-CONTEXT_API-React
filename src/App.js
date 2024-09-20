@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Users from "./Components/Users";
 import NewUser from "./Components/NewUser";
+import { UsersContext } from "./Context/UsersContext";
 
 function App() {
   const [users, setUsers] = useState([
@@ -8,26 +9,13 @@ function App() {
     { id: 2, username: "alex" },
   ]);
 
-  console.log(users);
-
-  // For Delete User
-
-  function handleDeleteUser(id) {
-    const filteredUsers = users.filter((user) => user.id !== id);
-    setUsers(filteredUsers);
-  }
-
-  // For Adding new User
-
-  function handleAddUser(newUser) {
-    setUsers((prevUsers) => [...prevUsers, newUser]);
-  }
-
   return (
-    <div>
-      <NewUser handleAddUser={handleAddUser} />
-      <Users users={users} handleDeleteUser={handleDeleteUser} />
-    </div>
+    <UsersContext.Provider value={{ users, setUsers }}>
+      <div>
+        <NewUser />
+        <Users users={users} />
+      </div>
+    </UsersContext.Provider>
   );
 }
 

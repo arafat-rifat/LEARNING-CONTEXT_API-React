@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import User from "./User";
+import { UsersContext } from "../Context/UsersContext";
 
-const Users = ({ users, handleDeleteUser }) => {
+const Users = () => {
+  const { users, setUsers } = useContext(UsersContext);
+
   return (
     <section className="users">
       {users.map((user) => (
-        <User key={user.id} user={user} handleDeleteUser={handleDeleteUser} />
+        <User key={user.id} user={user} />
       ))}
     </section>
   );
