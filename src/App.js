@@ -7,9 +7,16 @@ function App() {
     { id: 2, username: "alex" },
   ]);
 
+  // For Delete User
+
+  function handleDeleteUser(id) {
+    const filteredUsers = users.filter((user) => user.id !== id);
+    setUsers(filteredUsers);
+  }
+
   return (
     <div>
-      <Users users={users} />
+      <Users users={users} handleDeleteUser={handleDeleteUser} />
     </div>
   );
 }
